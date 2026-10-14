@@ -4,13 +4,13 @@
 
 ### First prompt
 
-> _[Paste your first prompt here]_
+> hii lets do hw 5. for that first, create a file called AI_prompts.md in the HW 5 assignment folder. i need this file to keep track of the prompts I use for each homework problem. Set it up with a heading for Problem 1: Vibe coder prompts and include a short placeholder for my first prompt and a follow-up prompt, with one sentence explaining what was missing after the first prompt. Keep it simple and organized. Don't start working on the actual assignment yet, and don't invent any prompts I haven't used. I'll update the file as I go.
 
 ### Follow-up prompt
 
-> _[Paste your follow-up prompt here]_
+> None. The first prompt did what I needed, so I didn't send a follow-up for Problem 1.
 
-**What was missing after the first prompt:** _[One sentence explaining what the first prompt didn't get right]_
+**What was missing after the first prompt:** Nothing: it created AI_prompts.md with the Problem 1 heading and the placeholders exactly as I asked.
 
 ## Problem 2: Database inspection
 
