@@ -1,0 +1,5 @@
+pydantic-ai-slim[openai,mcp]>=1.0  # agents (OpenAI-compatible model via Portkey) + MCP client
+python-dotenv>=1.0  # loads the course .env
+fastapi>=0.115  # dashboard API (Problem 7)
+uvicorn[standard]>=0.30  # serves backend/main.py
+httpx>=0.27  # FastAPI TestClient for route tests

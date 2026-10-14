@@ -1,0 +1,123 @@
+{
+  "problem": 4,
+  "tested_at": "2026-10-13T17:12:32-04:00",
+  "how_tested": "Each tool was called separately by Claude Code (desktop app, Code tab) in a session opened in the HW 5 folder, through the campus-customs server from .mcp.json. Prompts were written by Claude Code when the user asked it to finish the Problem 4 tests.",
+  "connection": {
+    "config_file": ".mcp.json",
+    "server_name": "campus-customs",
+    "command": "mcp_server/.venv/bin/python mcp_server/server.py (absolute paths in .mcp.json)",
+    "database": "data/campus_customs_new.db"
+  },
+  "tests": [
+    {
+      "test": 1,
+      "ticket": 101,
+      "prompt": "Use the campus-customs MCP tool check_stock to look up SKU CC-TEE-WHITE in size S (ticket 101). Show me exactly what the tool returned.",
+      "tool": "check_stock",
+      "claude_code_tool_name": "mcp__campus-customs__check_stock",
+      "arguments": {
+        "sku": "CC-TEE-WHITE",
+        "size": "S"
+      },
+      "output": {
+        "result": [
+          {
+            "sku": "CC-TEE-WHITE",
+            "name": "Classic Bulldog Tee",
+            "size": "S",
+            "qty": 0,
+            "location": "Aisle B"
+          }
+        ]
+      },
+      "db_query": "SELECT sku, name, size, qty, location FROM inventory WHERE sku = 'CC-TEE-WHITE' AND size = 'S'",
+      "database_result": {
+        "result": [
+          {
+            "sku": "CC-TEE-WHITE",
+            "name": "Classic Bulldog Tee",
+            "size": "S",
+            "qty": 0,
+            "location": "Aisle B"
+          }
+        ]
+      },
+      "matches_database": true
+    },
+    {
+      "test": 2,
+      "ticket": 102,
+      "prompt": "Use the campus-customs MCP tool get_rent_and_cash with lease_id 1 (ticket 102). Show me exactly what the tool returned.",
+      "tool": "get_rent_and_cash",
+      "claude_code_tool_name": "mcp__campus-customs__get_rent_and_cash",
+      "arguments": {
+        "lease_id": 1
+      },
+      "output": {
+        "today": "2026-08-31",
+        "lease": {
+          "id": 1,
+          "space_name": "Chapel Street shop",
+          "landlord": "Elm City Properties",
+          "monthly_rent": 2400,
+          "next_due": "2026-09-02",
+          "notes": null
+        },
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400,
+            "date": "2026-08-31"
+          }
+        ]
+      },
+      "db_query": "leases WHERE id = 1; all cash_accounts; desk.date_today",
+      "database_result": {
+        "today": "2026-08-31",
+        "lease": {
+          "id": 1,
+          "space_name": "Chapel Street shop",
+          "landlord": "Elm City Properties",
+          "monthly_rent": 2400.0,
+          "next_due": "2026-09-02",
+          "notes": null
+        },
+        "cash_accounts": [
+          {
+            "name": "checking",
+            "balance": 3400.0,
+            "date": "2026-08-31"
+          }
+        ]
+      },
+      "matches_database": true
+    },
+    {
+      "test": 3,
+      "ticket": 103,
+      "prompt": "Use the campus-customs MCP tool get_pricing for SKU CC-HOOD-NAVY (ticket 103). Show me exactly what the tool returned.",
+      "tool": "get_pricing",
+      "claude_code_tool_name": "mcp__campus-customs__get_pricing",
+      "arguments": {
+        "sku": "CC-HOOD-NAVY"
+      },
+      "output": {
+        "result": {
+          "sku": "CC-HOOD-NAVY",
+          "unit_cost": 22,
+          "list_price": 58
+        }
+      },
+      "db_query": "SELECT sku, unit_cost, list_price FROM pricing WHERE sku = 'CC-HOOD-NAVY'",
+      "database_result": {
+        "result": {
+          "sku": "CC-HOOD-NAVY",
+          "unit_cost": 22.0,
+          "list_price": 58.0
+        }
+      },
+      "matches_database": true
+    }
+  ],
+  "all_match": true
+}
